@@ -1,103 +1,184 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import React from 'react'
+import { MainLayout } from '@/components/layout/main-layout'
+import { StatsWidget } from '@/components/features/dashboard/stats-widget'
+import { RecentActivityWidget, ActivityItem } from '@/components/features/dashboard/recent-activity-widget'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { 
+  PlusIcon, 
+  ArrowRightIcon,
+  DocumentTextIcon,
+  BeakerIcon,
+  ChatBubbleLeftRightIcon,
+  VideoCameraIcon,
+} from '@heroicons/react/24/outline'
+
+const mockStats = [
+  { label: 'Active Test Cases', value: 245, change: '+12%', changeType: 'increase' as const },
+  { label: 'Pass Rate', value: '94.5%', change: '+2.3%', changeType: 'increase' as const },
+  { label: 'Open Bugs', value: 18, change: '-5', changeType: 'decrease' as const },
+  { label: 'Test Coverage', value: '78%', change: '+5%', changeType: 'increase' as const },
+]
+
+const mockActivities: ActivityItem[] = [
+  {
+    id: '1',
+    type: 'test',
+    title: 'Regression Test Suite Completed',
+    description: 'All 45 regression tests passed for release v2.1.0',
+    timestamp: '30 minutes ago',
+    user: 'Sarah Johnson',
+  },
+  {
+    id: '2',
+    type: 'bug',
+    title: 'High Priority Bug Identified',
+    description: 'Authentication issue affecting mobile users',
+    timestamp: '2 hours ago',
+    user: 'Mike Chen',
+  },
+  {
+    id: '3',
+    type: 'epic',
+    title: 'Epic Updated: Payment Gateway Integration',
+    description: 'Test plan approved and test cases created',
+    timestamp: '5 hours ago',
+    user: 'Emily Davis',
+  },
+  {
+    id: '4',
+    type: 'meeting',
+    title: 'Sprint Planning Meeting Scheduled',
+    description: 'QA team sync for Sprint 23 planning',
+    timestamp: '1 day ago',
+    user: 'Team Lead',
+  },
+]
+
+const quickActions = [
+  { icon: BeakerIcon, label: 'Create Test Case', href: '/test-cases/new' },
+  { icon: DocumentTextIcon, label: 'New Epic', href: '/epics/new' },
+  { icon: ChatBubbleLeftRightIcon, label: 'AI Assistant', href: '/ai-assistant' },
+  { icon: VideoCameraIcon, label: 'Schedule Meeting', href: '/meetings/new' },
+]
+
+export default function DashboardPage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <MainLayout userName="QA Tester">
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold gradient-text-title">Dashboard</h1>
+            <p className="text-white/65 mt-1">Welcome back! Here&apos;s your QA overview.</p>
+          </div>
+          <Button variant="primary" className="shadow-colored">
+            <PlusIcon className="h-4 w-4 mr-2" />
+            Quick Action
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        <StatsWidget title="Test Metrics" stats={mockStats} />
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <RecentActivityWidget activities={mockActivities} className="lg:col-span-2" />
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Quick Actions</CardTitle>
+              <CardDescription>Common tasks and shortcuts</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {quickActions.map((action, index) => {
+                  const Icon = action.icon
+                  return (
+                    <Button
+                      key={index}
+                      variant="glass"
+                      className="w-full justify-start"
+                      onClick={() => console.log(`Navigate to ${action.href}`)}
+                    >
+                      <Icon className="h-4 w-4 mr-2" />
+                      {action.label}
+                      <ArrowRightIcon className="h-4 w-4 ml-auto" />
+                    </Button>
+                  )
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Test Execution Progress</CardTitle>
+              <CardDescription>Current sprint test execution status</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-white">Completed</span>
+                    <span className="text-sm text-white/65">78/100</span>
+                  </div>
+                  <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
+                    <div className="bg-gradient-to-r from-genesys-orange to-genesys-orange-light h-2 rounded-full shadow-glow-orange" style={{ width: '78%' }}></div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <p className="text-2xl font-bold text-genesys-success glow-text-green">68</p>
+                    <p className="text-xs text-white/65">Passed</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-genesys-danger">8</p>
+                    <p className="text-xs text-white/65">Failed</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-genesys-warning">2</p>
+                    <p className="text-xs text-white/65">Blocked</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Upcoming Deadlines</CardTitle>
+              <CardDescription>Important dates and milestones</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-white">Release v2.1.0 Testing</p>
+                    <p className="text-xs text-white/65">Full regression suite</p>
+                  </div>
+                  <span className="text-xs font-medium text-genesys-danger">2 days</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-white">Sprint 23 Test Plan</p>
+                    <p className="text-xs text-white/65">Review and approval</p>
+                  </div>
+                  <span className="text-xs font-medium text-genesys-warning">5 days</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-white">API Testing Workshop</p>
+                    <p className="text-xs text-white/65">Team training session</p>
+                  </div>
+                  <span className="text-xs font-medium text-white/50">1 week</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </MainLayout>
+  )
 }
