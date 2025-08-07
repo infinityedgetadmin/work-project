@@ -12,6 +12,7 @@ import {
   VideoCameraIcon,
   BugAntIcon,
   CodeBracketIcon,
+  DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils'
 
@@ -26,6 +27,7 @@ const defaultNavItems: NavItem[] = [
   { name: 'Epics', href: '/epics', icon: DocumentTextIcon },
   { name: 'Bug Hunts', href: '/bug-hunts', icon: BugAntIcon },
   { name: 'Code Changes', href: '/code-changes', icon: CodeBracketIcon },
+  { name: 'Confluence', href: '/confluence', icon: DocumentDuplicateIcon },
   { name: 'AI Assistant', href: '/ai-assistant', icon: ChatBubbleLeftRightIcon },
   { name: 'Meetings', href: '/meetings', icon: VideoCameraIcon },
   { name: 'New Relic', href: '/new-relic', icon: ServerStackIcon },
