@@ -70,8 +70,8 @@ export default function DashboardPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold gradient-text-title">Dashboard</h1>
-            <p className="text-white/65 mt-1">Welcome back! Here&apos;s your QA overview.</p>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-[#FF451A] to-orange-600 bg-clip-text text-transparent">Dashboard</h1>
+            <p className="text-gray-600 mt-1">Welcome back! Here&apos;s your QA overview.</p>
           </div>
           <Button variant="primary" className="shadow-colored">
             <PlusIcon className="h-4 w-4 mr-2" />
@@ -84,9 +84,9 @@ export default function DashboardPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <RecentActivityWidget activities={mockActivities} className="lg:col-span-2" />
           
-          <Card>
+          <Card className="glass-orange">
             <CardHeader>
-              <CardTitle className="text-lg">Quick Actions</CardTitle>
+              <CardTitle className="text-lg text-[#FF451A]">Quick Actions</CardTitle>
               <CardDescription>Common tasks and shortcuts</CardDescription>
             </CardHeader>
             <CardContent>
@@ -96,8 +96,8 @@ export default function DashboardPage() {
                   return (
                     <Button
                       key={index}
-                      variant="glass"
-                      className="w-full justify-start"
+                      variant="secondary"
+                      className="w-full justify-start hover:border-[#FF451A]/30"
                       onClick={() => console.log(`Navigate to ${action.href}`)}
                     >
                       <Icon className="h-4 w-4 mr-2" />

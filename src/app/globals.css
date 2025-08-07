@@ -1,1 +1,165 @@
 @import "tailwindcss";
+
+/* CSS Variables for theming */
+:root {
+  --primary: 255 69 26; /* #FF451A in RGB */
+  --primary-light: 255 110 77;
+  --primary-dark: 204 55 21;
+  --glass-bg: 255 255 255;
+  --glass-border: 255 255 255;
+}
+
+/* Base body styles */
+body {
+  background: linear-gradient(135deg, #fff5f0 0%, #f0f8ff 50%, #faf5ff 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass morphism base styles */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* Glass with orange tint */
+.glass-orange {
+  background: linear-gradient(135deg, 
+    rgba(255, 237, 224, 0.7) 0%, 
+    rgba(255, 255, 255, 0.6) 50%, 
+    rgba(255, 237, 224, 0.5) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 69, 26, 0.15);
+  box-shadow: 0 8px 32px rgba(255, 69, 26, 0.1);
+}
+
+/* Glass card styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* Glass button styles */
+.glass-button {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.glass-button-primary {
+  background: linear-gradient(135deg, rgba(255, 69, 26, 0.9) 0%, rgba(230, 61, 23, 0.9) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 69, 26, 0.3);
+  color: white;
+  box-shadow: 0 4px 16px rgba(255, 69, 26, 0.3);
+  transition: all 0.2s ease;
+}
+
+.glass-button-primary:hover {
+  background: linear-gradient(135deg, rgba(230, 61, 23, 0.9) 0%, rgba(204, 55, 21, 0.9) 100%);
+  box-shadow: 0 6px 20px rgba(255, 69, 26, 0.4);
+}
+
+/* Glass input styles */
+.glass-input {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 69, 26, 0.5);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 69, 26, 0.1);
+}
+
+/* Orange primary button */
+.btn-primary {
+  background: #FF451A;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 16px rgba(255, 69, 26, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #E63D17;
+  box-shadow: 0 6px 20px rgba(255, 69, 26, 0.4);
+}
+
+/* Glass navigation */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Glass sidebar */
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Additional utility classes */
+.shadow-colored {
+  box-shadow: 0 4px 16px rgba(255, 69, 26, 0.3);
+}
+
+.shadow-colored:hover {
+  box-shadow: 0 6px 20px rgba(255, 69, 26, 0.4);
+}

@@ -44,7 +44,7 @@ export function Sidebar({ navItems = defaultNavItems, collapsed = false, onToggl
   return (
     <aside
       className={cn(
-        'sticky top-16 h-[calc(100vh-4rem)] border-r border-gray-200 bg-white transition-all duration-300',
+        'sticky top-16 h-[calc(100vh-4rem)] glass-sidebar transition-all duration-300',
         collapsed ? 'w-16' : 'w-64'
       )}
     >
@@ -59,10 +59,10 @@ export function Sidebar({ navItems = defaultNavItems, collapsed = false, onToggl
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                    'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200',
                     isActive
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                      ? 'glass-button-primary shadow-lg'
+                      : 'text-gray-700 hover:bg-white/50 hover:text-[#FF451A] glass-button'
                   )}
                   title={collapsed ? item.name : undefined}
                 >
@@ -76,7 +76,7 @@ export function Sidebar({ navItems = defaultNavItems, collapsed = false, onToggl
         
         <button
           onClick={onToggle}
-          className="mt-auto flex items-center justify-center rounded-lg p-2 text-gray-600 hover:bg-gray-100"
+          className="mt-auto flex items-center justify-center rounded-lg p-2 text-gray-600 hover:text-[#FF451A] glass-button"
           aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           <svg
