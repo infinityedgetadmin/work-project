@@ -30,7 +30,7 @@ export interface Message {
 }
 
 export interface Context {
-  type: 'epic' | 'meeting' | 'document' | 'ticket';
+  type: 'epic' | 'meeting' | 'document' | 'ticket' | 'confluence';
   id: string;
   title: string;
   metadata?: Record<string, unknown>;

@@ -9,9 +9,12 @@ import {
   ClockIcon,
   MagnifyingGlassIcon,
   ChevronRightIcon,
-  ChevronDownIcon
+  ChevronDownIcon,
+  DocumentDuplicateIcon
 } from '@heroicons/react/24/outline';
 import type { Context } from '@/app/(dashboard)/ai-assistant/page';
+import { ConfluenceSearchPanel } from '@/components/features/confluence/search-panel';
+import { ConfluencePage } from '@/services/mcp/confluence-client';
 
 interface ContextPanelProps {
   activeContext: Context | null;
@@ -29,6 +32,8 @@ export function ContextPanel({
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(['recent', 'active'])
   );
+  const [showConfluenceSearch, setShowConfluenceSearch] = useState(false);
+  const [selectedConfluencePages, setSelectedConfluencePages] = useState<ConfluencePage[]>([]);
 
   const getContextIcon = (type: Context['type']) => {
     switch (type) {
@@ -40,6 +45,8 @@ export function ContextPanel({
         return DocumentTextIcon;
       case 'ticket':
         return TicketIcon;
+      case 'confluence':
+        return DocumentDuplicateIcon;
       default:
         return DocumentTextIcon;
     }
@@ -55,6 +62,8 @@ export function ContextPanel({
         return 'bg-blue-100 text-blue-700 border-blue-200';
       case 'ticket':
         return 'bg-orange-100 text-orange-700 border-orange-200';
+      case 'confluence':
+        return 'bg-indigo-100 text-indigo-700 border-indigo-200';
       default:
         return 'bg-gray-100 text-gray-700 border-gray-200';
     }
@@ -237,11 +246,19 @@ export function ContextPanel({
           )}
         </div>
 
-        {/* Add Context Button */}
-        <button className="w-full mt-4 p-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-700 transition-colors flex items-center justify-center space-x-2">
-          <PlusIcon className="h-4 w-4" />
-          <span className="text-sm font-medium">Add Context</span>
-        </button>
+        {/* Add Context Buttons */}
+        <div className="mt-4 space-y-2">
+          <button 
+            onClick={() => setShowConfluenceSearch(!showConfluenceSearch)}
+            className="w-full p-3 border-2 border-dashed border-indigo-300 rounded-lg text-indigo-600 hover:border-indigo-400 hover:text-indigo-700 transition-colors flex items-center justify-center space-x-2">
+            <DocumentDuplicateIcon className="h-4 w-4" />
+            <span className="text-sm font-medium">Add Confluence Context</span>
+          </button>
+          <button className="w-full p-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-700 transition-colors flex items-center justify-center space-x-2">
+            <PlusIcon className="h-4 w-4" />
+            <span className="text-sm font-medium">Add Other Context</span>
+          </button>
+        </div>
       </div>
 
       {/* Context Info Footer */}
@@ -250,6 +267,56 @@ export function ContextPanel({
           <strong>Tip:</strong> Adding context helps the AI provide more relevant and accurate responses specific to your current work.
         </p>
       </div>
+
+      {/* Confluence Search Modal */}
+      {showConfluenceSearch && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-xl w-[600px] h-[600px] flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="text-lg font-semibold">Add Confluence Pages as Context</h3>
+              <button
+                onClick={() => setShowConfluenceSearch(false)}
+                className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <XMarkIcon className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="flex-1 p-4">
+              <ConfluenceSearchPanel
+                onPageSelect={(page) => {
+                  const exists = selectedConfluencePages.some(p => p.id === page.id);
+                  if (!exists) {
+                    setSelectedConfluencePages(prev => [...prev, page]);
+                    onSelectContext({
+                      type: 'confluence',
+                      id: page.id,
+                      title: page.title,
+                      metadata: {
+                        space: page.space?.name,
+                        url: page._links?.webui
+                      }
+                    });
+                  }
+                }}
+                selectedPages={selectedConfluencePages}
+              />
+            </div>
+            <div className="p-4 border-t">
+              <button
+                onClick={() => {
+                  setShowConfluenceSearch(false);
+                  if (selectedConfluencePages.length > 0) {
+                    // Pages already added as context
+                  }
+                }}
+                className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Done ({selectedConfluencePages.length} pages selected)
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
