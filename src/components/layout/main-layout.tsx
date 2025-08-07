@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Header } from './header'
 import { Sidebar } from './sidebar'
+import { FloatingAIChat } from '@/components/features/ai-assistant/floating-ai-chat'
 import { cn } from '@/lib/utils'
 
 export interface MainLayoutProps {
@@ -38,6 +39,7 @@ export function MainLayout({ children, userName }: MainLayoutProps) {
           </div>
         </main>
       </div>
+      <FloatingAIChat />
     </div>
   )
 }

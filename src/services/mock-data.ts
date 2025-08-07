@@ -18,40 +18,40 @@ import type {
 
 export const mockJiraEpic: JiraEpic = {
   id: 'epic-001',
-  key: 'PURE-1234',
-  summary: 'User Profile Enhancement - Phase 2',
+  key: 'GC-ACD-2024',
+  summary: 'ACD Routing Engine Modernization',
   description: `## Overview
-Implement comprehensive user profile management system with advanced features including profile customization, privacy settings, and social integration.
+Modernize the Automatic Call Distribution (ACD) system with advanced routing capabilities including skills-based routing, predictive routing, and real-time queue optimization.
 
 ## Acceptance Criteria
-- Users can upload and manage profile pictures
-- Privacy settings are granular and easy to understand
-- Social media accounts can be linked/unlinked
-- Profile completion percentage is displayed
-- Data validation on all input fields
+- Skills-based routing matches agents with appropriate expertise
+- Predictive routing uses ML to optimize customer-agent pairing
+- Queue priority management with configurable rules
+- Real-time monitoring and analytics dashboard
+- Bullseye routing for preferred agent assignment
 
 ## Technical Requirements
-- RESTful API endpoints for profile CRUD operations
-- Real-time validation using WebSocket
-- Image optimization and CDN integration
-- GDPR compliance for data management`,
+- RESTful API for routing configuration
+- WebSocket for real-time queue updates
+- Integration with Workforce Management (WFM) API
+- Performance: <100ms routing decision time`,
   status: 'In Progress',
   priority: 'High',
   assignee: {
-    displayName: 'Hudson Shimanyula',
-    emailAddress: 'hudson.s@genesys.com',
-    avatarUrl: 'https://ui-avatars.com/api/?name=Hudson+Shimanyula&background=3b82f6&color=fff'
+    displayName: 'QA Lead',
+    emailAddress: 'qa.lead@genesys.com',
+    avatarUrl: 'https://ui-avatars.com/api/?name=QA+Lead&background=3b82f6&color=fff'
   },
   reporter: {
-    displayName: 'Anu Manager',
-    emailAddress: 'anu.m@genesys.com',
-    avatarUrl: 'https://ui-avatars.com/api/?name=Anu+Manager&background=10b981&color=fff'
+    displayName: 'Engineering Manager',
+    emailAddress: 'eng.manager@genesys.com',
+    avatarUrl: 'https://ui-avatars.com/api/?name=Engineering+Manager&background=10b981&color=fff'
   },
   createdAt: '2024-10-15T08:00:00Z',
   updatedAt: '2024-12-06T14:30:00Z',
   dueDate: '2025-01-15T23:59:59Z',
-  labels: ['profile', 'phase-2', 'high-priority', 'gdpr'],
-  components: ['User Management', 'API', 'Frontend'],
+  labels: ['acd', 'routing', 'high-priority', 'platform'],
+  components: ['Routing Engine', 'Analytics API', 'Platform'],
   storyPoints: 21,
   issueType: 'Epic',
   linkedIssues: []
@@ -60,16 +60,16 @@ Implement comprehensive user profile management system with advanced features in
 export const mockJiraTickets: JiraTicket[] = [
   {
     id: 'ticket-001',
-    key: 'PURE-1235',
-    summary: 'Implement profile picture upload with validation',
-    description: 'Add ability to upload, crop, and validate profile pictures. Max size 5MB, formats: JPG, PNG, WebP',
+    key: 'GC-ACD-2025',
+    summary: 'Implement skills-based routing algorithm',
+    description: 'Develop routing logic that matches customer interactions with agents based on skill requirements and proficiency levels',
     status: 'In Review',
     priority: 'High',
     issueType: 'Story',
-    parentKey: 'PURE-1234',
+    parentKey: 'GC-ACD-2024',
     assignee: {
-      displayName: 'Michael QA',
-      emailAddress: 'michael.qa@genesys.com'
+      displayName: 'Senior QA Engineer',
+      emailAddress: 'senior.qa@genesys.com'
     },
     createdAt: '2024-10-20T09:00:00Z',
     updatedAt: '2024-12-05T16:00:00Z',
@@ -78,16 +78,16 @@ export const mockJiraTickets: JiraTicket[] = [
   },
   {
     id: 'ticket-002',
-    key: 'PURE-1236',
-    summary: 'Add privacy settings management UI',
-    description: 'Create comprehensive privacy settings interface with toggles for data sharing, visibility, and third-party access',
+    key: 'GC-ACD-2026',
+    summary: 'Add queue priority management interface',
+    description: 'Create UI for configuring queue priorities, SLA rules, and escalation paths',
     status: 'In Progress',
     priority: 'High',
     issueType: 'Story',
-    parentKey: 'PURE-1234',
+    parentKey: 'GC-ACD-2024',
     assignee: {
-      displayName: 'Hudson Shimanyula',
-      emailAddress: 'hudson.s@genesys.com'
+      displayName: 'QA Lead',
+      emailAddress: 'qa.lead@genesys.com'
     },
     createdAt: '2024-10-22T10:00:00Z',
     updatedAt: '2024-12-06T10:00:00Z',
@@ -96,13 +96,13 @@ export const mockJiraTickets: JiraTicket[] = [
   },
   {
     id: 'ticket-003',
-    key: 'PURE-1237',
-    summary: 'Fix validation error on email field',
-    description: 'Email validation incorrectly rejects valid emails with + symbol',
+    key: 'GC-ACD-2027',
+    summary: 'Fix agent state synchronization issue',
+    description: 'Agent availability status not updating correctly when switching between ACW and Ready states',
     status: 'Done',
     priority: 'Medium',
     issueType: 'Bug',
-    parentKey: 'PURE-1234',
+    parentKey: 'GC-ACD-2024',
     assignee: {
       displayName: 'Dev Team',
       emailAddress: 'dev.team@genesys.com'
@@ -115,29 +115,29 @@ export const mockJiraTickets: JiraTicket[] = [
   },
   {
     id: 'ticket-004',
-    key: 'PURE-1238',
-    summary: 'Social media integration - OAuth implementation',
-    description: 'Implement OAuth 2.0 for LinkedIn, Twitter, and GitHub profile linking',
+    key: 'GC-ACD-2028',
+    summary: 'Predictive routing ML model integration',
+    description: 'Integrate machine learning model for predictive customer-agent matching based on historical data',
     status: 'To Do',
     priority: 'Medium',
     issueType: 'Story',
-    parentKey: 'PURE-1234',
+    parentKey: 'GC-ACD-2024',
     createdAt: '2024-11-15T11:00:00Z',
     updatedAt: '2024-11-15T11:00:00Z',
     timeEstimate: 8
   },
   {
     id: 'ticket-005',
-    key: 'PURE-1239',
-    summary: 'Profile completion percentage calculator',
-    description: 'Show users their profile completion status with suggestions for missing fields',
+    key: 'GC-ACD-2029',
+    summary: 'Queue overflow handling configuration',
+    description: 'Implement configurable overflow rules for queue capacity management and failover scenarios',
     status: 'Blocked',
     priority: 'Low',
     issueType: 'Task',
-    parentKey: 'PURE-1234',
+    parentKey: 'GC-ACD-2024',
     assignee: {
-      displayName: 'Hudson Shimanyula',
-      emailAddress: 'hudson.s@genesys.com'
+      displayName: 'QA Lead',
+      emailAddress: 'qa.lead@genesys.com'
     },
     createdAt: '2024-11-20T13:00:00Z',
     updatedAt: '2024-12-01T15:00:00Z',
@@ -174,7 +174,7 @@ Profile data is stored in PostgreSQL with Redis caching layer...`,
     createdAt: '2024-10-10T08:00:00Z',
     lastModified: '2024-12-01T14:00:00Z',
     lastModifiedBy: {
-      displayName: 'Hudson Shimanyula',
+      displayName: 'QA Lead',
       emailAddress: 'hudson.s@genesys.com'
     },
     url: 'https://confluence.genesys.com/display/TECH/User+Profile+Enhancement',
@@ -209,13 +209,13 @@ Comprehensive testing of all profile enhancement features including functional, 
     excerpt: 'Complete QA test plan with test cases, scenarios, and acceptance criteria for profile enhancement epic',
     version: 8,
     createdBy: {
-      displayName: 'Michael QA',
-      emailAddress: 'michael.qa@genesys.com'
+      displayName: 'Senior QA Engineer',
+      emailAddress: 'senior.qa@genesys.com'
     },
     createdAt: '2024-10-18T10:00:00Z',
     lastModified: '2024-12-05T11:00:00Z',
     lastModifiedBy: {
-      displayName: 'Hudson Shimanyula',
+      displayName: 'QA Lead',
       emailAddress: 'hudson.s@genesys.com'
     },
     url: 'https://confluence.genesys.com/display/QA/Test+Plan+Profile+Enhancement',
@@ -230,7 +230,7 @@ export const mockZoomMeetings: ZoomMeeting[] = [
     startTime: '2024-12-02T14:00:00Z',
     duration: 60,
     status: 'completed',
-    hostEmail: 'anu.m@genesys.com',
+    hostEmail: 'eng.manager@genesys.com',
     participants: 8,
     recordingUrl: 'https://zoom.us/rec/share/abc123',
     transcriptUrl: 'https://zoom.us/transcript/abc123',
@@ -247,7 +247,7 @@ export const mockZoomMeetings: ZoomMeeting[] = [
     startTime: '2024-12-05T15:00:00Z',
     duration: 30,
     status: 'completed',
-    hostEmail: 'hudson.s@genesys.com',
+    hostEmail: 'qa.lead@genesys.com',
     participants: 4,
     recordingUrl: 'https://zoom.us/rec/share/def456',
     transcriptUrl: 'https://zoom.us/transcript/def456',
@@ -290,7 +290,7 @@ export const mockZoomMeetings: ZoomMeeting[] = [
     startTime: '2024-12-06T09:00:00Z',
     duration: 15,
     status: 'completed',
-    hostEmail: 'hudson.s@genesys.com',
+    hostEmail: 'qa.lead@genesys.com',
     participants: 6,
     meetingType: 'recurring',
     aiAnalyzed: false
@@ -440,7 +440,7 @@ export const mockNewRelicMetrics: NewRelicMetrics = {
         startTime: '2024-12-06T10:14:45Z'
       }
     ],
-    triggeredBy: 'hudson.s@genesys.com',
+    triggeredBy: 'qa.lead@genesys.com',
     branch: 'feature/profile-enhancement',
     commitHash: 'a3f5c89'
   },
@@ -649,14 +649,14 @@ export const mockRelease: Release = {
       id: 'check-001',
       title: 'All P1 test cases passed',
       completed: true,
-      assignee: 'hudson.s@genesys.com',
+      assignee: 'qa.lead@genesys.com',
       category: 'testing'
     },
     {
       id: 'check-002',
       title: 'Performance benchmarks met',
       completed: false,
-      assignee: 'michael.qa@genesys.com',
+      assignee: 'senior.qa@genesys.com',
       dueDate: '2025-01-10T00:00:00Z',
       category: 'testing'
     },
@@ -686,7 +686,7 @@ export const mockRelease: Release = {
       id: 'check-006',
       title: 'Stakeholder approval',
       completed: false,
-      assignee: 'anu.m@genesys.com',
+      assignee: 'eng.manager@genesys.com',
       dueDate: '2025-01-14T00:00:00Z',
       category: 'approval'
     }
@@ -697,15 +697,15 @@ export const mockRelease: Release = {
 const additionalEpics: JiraEpic[] = [
   {
     id: 'epic-002',
-    key: 'PURE-1240',
-    summary: 'Payment Gateway Integration - Stripe & PayPal',
-    description: 'Implement payment processing with multiple gateway support',
+    key: 'GC-IVR-890',
+    summary: 'IVR Self-Service Enhancement with NLP',
+    description: 'Modernize IVR system with natural language processing and intelligent call flow routing',
     status: 'In Progress',
     priority: 'Critical',
     assignee: {
-      displayName: 'Michael QA',
-      emailAddress: 'michael.qa@genesys.com',
-      avatarUrl: 'https://ui-avatars.com/api/?name=Michael+QA&background=3b82f6&color=fff'
+      displayName: 'Senior QA Engineer',
+      emailAddress: 'senior.qa@genesys.com',
+      avatarUrl: 'https://ui-avatars.com/api/?name=Senior+QA&background=3b82f6&color=fff'
     },
     reporter: {
       displayName: 'Product Owner',
@@ -715,43 +715,43 @@ const additionalEpics: JiraEpic[] = [
     createdAt: '2024-09-01T08:00:00Z',
     updatedAt: '2024-12-05T14:30:00Z',
     dueDate: '2024-12-20T23:59:59Z',
-    labels: ['payment', 'critical', 'integration'],
-    components: ['Payment', 'API'],
+    labels: ['ivr', 'critical', 'architect', 'nlp'],
+    components: ['Architect', 'Voice', 'AI'],
     storyPoints: 34,
     issueType: 'Epic',
     linkedIssues: []
   },
   {
     id: 'epic-003',
-    key: 'PURE-1245',
-    summary: 'Mobile App Responsive Design Overhaul',
-    description: 'Complete redesign of mobile experience with improved performance',
+    key: 'GC-WFM-780',
+    summary: 'Workforce Management Integration Suite',
+    description: 'Complete workforce scheduling, forecasting, and adherence tracking system',
     status: 'To Do',
     priority: 'High',
     assignee: {
-      displayName: 'Frontend Team',
-      emailAddress: 'frontend@genesys.com',
-      avatarUrl: 'https://ui-avatars.com/api/?name=Frontend+Team&background=3b82f6&color=fff'
+      displayName: 'WFM Team',
+      emailAddress: 'wfm@genesys.com',
+      avatarUrl: 'https://ui-avatars.com/api/?name=WFM+Team&background=3b82f6&color=fff'
     },
     reporter: {
-      displayName: 'Design Lead',
-      emailAddress: 'design@genesys.com',
-      avatarUrl: 'https://ui-avatars.com/api/?name=Design+Lead&background=10b981&color=fff'
+      displayName: 'Operations Manager',
+      emailAddress: 'ops@genesys.com',
+      avatarUrl: 'https://ui-avatars.com/api/?name=Operations+Manager&background=10b981&color=fff'
     },
     createdAt: '2024-11-15T08:00:00Z',
     updatedAt: '2024-12-04T10:00:00Z',
     dueDate: '2025-02-01T23:59:59Z',
-    labels: ['mobile', 'ui', 'responsive'],
-    components: ['Mobile', 'UI/UX'],
+    labels: ['workforce', 'scheduling', 'analytics'],
+    components: ['WFM', 'Analytics', 'Platform'],
     storyPoints: 55,
     issueType: 'Epic',
     linkedIssues: []
   },
   {
     id: 'epic-004',
-    key: 'PURE-1250',
-    summary: 'API Rate Limiting and Throttling',
-    description: 'Implement comprehensive rate limiting to prevent API abuse',
+    key: 'GC-QUEUE-567',
+    summary: 'Queue Performance Analytics Dashboard',
+    description: 'Real-time queue monitoring with predictive analytics and performance insights',
     status: 'Done',
     priority: 'Medium',
     assignee: {
@@ -774,52 +774,52 @@ const additionalEpics: JiraEpic[] = [
   },
   {
     id: 'epic-005',
-    key: 'PURE-1255',
-    summary: 'Data Analytics Dashboard',
-    description: 'Build comprehensive analytics dashboard for business metrics',
+    key: 'GC-PRED-450',
+    summary: 'Predictive Engagement Engine',
+    description: 'Implement AI-powered predictive routing and engagement scoring for optimal customer-agent matching',
     status: 'In Review',
     priority: 'High',
     assignee: {
-      displayName: 'Hudson Shimanyula',
-      emailAddress: 'hudson.s@genesys.com',
-      avatarUrl: 'https://ui-avatars.com/api/?name=Hudson+Shimanyula&background=3b82f6&color=fff'
+      displayName: 'QA Lead',
+      emailAddress: 'qa.lead@genesys.com',
+      avatarUrl: 'https://ui-avatars.com/api/?name=QA+Lead&background=3b82f6&color=fff'
     },
     reporter: {
-      displayName: 'Business Analytics',
-      emailAddress: 'analytics@genesys.com',
-      avatarUrl: 'https://ui-avatars.com/api/?name=Business+Analytics&background=10b981&color=fff'
+      displayName: 'AI/ML Team',
+      emailAddress: 'ai.team@genesys.com',
+      avatarUrl: 'https://ui-avatars.com/api/?name=AI+ML+Team&background=10b981&color=fff'
     },
     createdAt: '2024-10-01T08:00:00Z',
     updatedAt: '2024-12-06T09:00:00Z',
     dueDate: '2024-12-15T23:59:59Z',
-    labels: ['analytics', 'dashboard', 'reporting'],
-    components: ['Analytics', 'Frontend'],
+    labels: ['predictive', 'ai', 'routing', 'engagement'],
+    components: ['AI/ML', 'Routing', 'Analytics'],
     storyPoints: 34,
     issueType: 'Epic',
     linkedIssues: []
   },
   {
     id: 'epic-006',
-    key: 'PURE-1260',
-    summary: 'Accessibility Compliance - WCAG 2.1 AA',
-    description: 'Ensure full accessibility compliance across all features',
+    key: 'GC-AGENT-312',
+    summary: 'Agent State Management & Presence System',
+    description: 'Advanced agent state tracking with automatic status updates, reason codes, and real-time presence',
     status: 'Blocked',
     priority: 'High',
     assignee: {
-      displayName: 'QA Team',
-      emailAddress: 'qa@genesys.com',
-      avatarUrl: 'https://ui-avatars.com/api/?name=QA+Team&background=3b82f6&color=fff'
+      displayName: 'Platform Team',
+      emailAddress: 'platform@genesys.com',
+      avatarUrl: 'https://ui-avatars.com/api/?name=Platform+Team&background=3b82f6&color=fff'
     },
     reporter: {
-      displayName: 'Compliance Officer',
-      emailAddress: 'compliance@genesys.com',
-      avatarUrl: 'https://ui-avatars.com/api/?name=Compliance+Officer&background=10b981&color=fff'
+      displayName: 'Operations Director',
+      emailAddress: 'ops.director@genesys.com',
+      avatarUrl: 'https://ui-avatars.com/api/?name=Ops+Director&background=10b981&color=fff'
     },
     createdAt: '2024-09-15T08:00:00Z',
     updatedAt: '2024-12-03T14:00:00Z',
     dueDate: '2025-01-01T23:59:59Z',
-    labels: ['accessibility', 'compliance', 'wcag'],
-    components: ['UI/UX', 'Frontend'],
+    labels: ['agent', 'state-management', 'presence', 'platform'],
+    components: ['Platform', 'Routing', 'Agent Desktop'],
     storyPoints: 89,
     issueType: 'Epic',
     linkedIssues: []
@@ -933,7 +933,7 @@ export async function getMeetingDetails(meetingId: string): Promise<MeetingDetai
       id: 'action-001',
       title: 'Create comprehensive test cases for profile upload feature',
       description: 'Develop test cases covering file size validation, format validation, and concurrent upload scenarios',
-      assignee: 'Hudson Shimanyula',
+      assignee: 'QA Lead',
       priority: 'High',
       dueDate: '2024-12-15T00:00:00Z',
       confidence: 0.92,
@@ -943,7 +943,7 @@ export async function getMeetingDetails(meetingId: string): Promise<MeetingDetai
       id: 'action-002',
       title: 'Review and update API documentation',
       description: 'Update the API specs to reflect the new validation rules discussed in the meeting',
-      assignee: 'Michael QA',
+      assignee: 'Senior QA Engineer',
       priority: 'Medium',
       confidence: 0.88,
       source: 'ai'
@@ -952,7 +952,7 @@ export async function getMeetingDetails(meetingId: string): Promise<MeetingDetai
       id: 'action-003',
       title: 'Schedule follow-up meeting for GDPR compliance',
       description: 'Organize a technical deep-dive session to address data privacy concerns',
-      assignee: 'Anu Manager',
+      assignee: 'Engineering Manager',
       priority: 'High',
       dueDate: '2024-12-10T00:00:00Z',
       confidence: 0.95,
@@ -962,25 +962,25 @@ export async function getMeetingDetails(meetingId: string): Promise<MeetingDetai
 
   return {
     ...baseMeeting,
-    transcript: `[00:00] Anu: Good morning everyone, let's start our sprint planning for the profile enhancement epic.
+    transcript: `[00:00] Manager: Good morning everyone, let's start our sprint planning for the profile enhancement epic.
     
-[00:30] Hudson: Thanks Anu. I've reviewed the test cases for the profile upload feature. We have good coverage for the happy path, but we need more edge cases.
+[00:30] QA Lead: Thanks. I've reviewed the test cases for the profile upload feature. We have good coverage for the happy path, but we need more edge cases.
 
-[02:15] Michael: I agree. Specifically, we should test concurrent uploads and network interruption scenarios.
+[02:15] Senior QA: I agree. Specifically, we should test concurrent uploads and network interruption scenarios.
 
 [05:45] Dev Lead: From the development side, we're on track with the API implementation. The image processing service is ready for integration testing.
 
-[10:20] Hudson: Great. I'll create additional test cases for the edge scenarios Michael mentioned. We should also add performance tests for the image processing.
+[10:20] QA Lead: Great. I'll create additional test cases for the edge scenarios mentioned. We should also add performance tests for the image processing.
 
-[15:00] Anu: What about the GDPR compliance? Do we have test coverage for data deletion and export features?
+[15:00] Manager: What about the GDPR compliance? Do we have test coverage for data deletion and export features?
 
-[16:30] Michael: Yes, I've included those in the security test suite. We're testing both the right to be forgotten and data portability requirements.
+[16:30] Senior QA: Yes, I've included those in the security test suite. We're testing both the right to be forgotten and data portability requirements.
 
-[25:00] Anu: Excellent. Let's assign story points...`,
+[25:00] Manager: Excellent. Let's assign story points...`,
     participantsList: [
-      { name: 'Anu Manager', email: 'anu.m@genesys.com', duration: 60 },
-      { name: 'Hudson Shimanyula', email: 'hudson.s@genesys.com', duration: 60 },
-      { name: 'Michael QA', email: 'michael.qa@genesys.com', duration: 45 },
+      { name: 'Engineering Manager', email: 'eng.manager@genesys.com', duration: 60 },
+      { name: 'QA Lead', email: 'qa.lead@genesys.com', duration: 60 },
+      { name: 'Senior QA Engineer', email: 'senior.qa@genesys.com', duration: 45 },
       { name: 'Dev Lead', email: 'dev.lead@genesys.com', duration: 30 }
     ],
     extractedActionItems,
@@ -1011,32 +1011,32 @@ export async function getMeetingTranscript(meetingId: string): Promise<MeetingTr
   
   return {
     meetingId,
-    content: `[00:00] Anu: Good morning everyone, let's start our sprint planning for the profile enhancement epic.
+    content: `[00:00] Manager: Good morning everyone, let's start our sprint planning for the profile enhancement epic.
     
-[00:30] Hudson: Thanks Anu. I've reviewed the test cases for the profile upload feature. We have good coverage for the happy path, but we need more edge cases.
+[00:30] QA Lead: Thanks. I've reviewed the test cases for the profile upload feature. We have good coverage for the happy path, but we need more edge cases.
 
-[02:15] Michael: I agree. Specifically, we should test concurrent uploads and network interruption scenarios.
+[02:15] Senior QA: I agree. Specifically, we should test concurrent uploads and network interruption scenarios.
 
 [05:45] Dev Lead: From the development side, we're on track with the API implementation. The image processing service is ready for integration testing.
 
-[10:20] Hudson: Great. I'll create additional test cases for the edge scenarios Michael mentioned. We should also add performance tests for the image processing.
+[10:20] QA Lead: Great. I'll create additional test cases for the edge scenarios mentioned. We should also add performance tests for the image processing.
 
-[15:00] Anu: What about the GDPR compliance? Do we have test coverage for data deletion and export features?
+[15:00] Manager: What about the GDPR compliance? Do we have test coverage for data deletion and export features?
 
-[16:30] Michael: Yes, I've included those in the security test suite. We're testing both the right to be forgotten and data portability requirements.
+[16:30] Senior QA: Yes, I've included those in the security test suite. We're testing both the right to be forgotten and data portability requirements.
 
-[25:00] Anu: Excellent. Let's assign story points...`,
+[25:00] Manager: Excellent. Let's assign story points...`,
     speakers: [
-      { name: 'Anu Manager', email: 'anu.m@genesys.com', duration: 780 },
-      { name: 'Hudson Shimanyula', email: 'hudson.s@genesys.com', duration: 920 },
-      { name: 'Michael QA', email: 'michael.qa@genesys.com', duration: 640 },
+      { name: 'Engineering Manager', email: 'eng.manager@genesys.com', duration: 780 },
+      { name: 'QA Lead', email: 'qa.lead@genesys.com', duration: 920 },
+      { name: 'Senior QA Engineer', email: 'senior.qa@genesys.com', duration: 640 },
       { name: 'Dev Lead', email: 'dev.lead@genesys.com', duration: 460 }
     ],
     keywords: ['sprint planning', 'profile enhancement', 'test cases', 'GDPR', 'edge cases', 'performance testing'],
     summary: 'Sprint planning meeting for profile enhancement epic. Discussed test coverage gaps, GDPR compliance testing, and assigned story points to remaining tasks.',
     actionItems: [
-      'Hudson: Create additional edge case tests for concurrent uploads',
-      'Michael: Finalize security test suite for GDPR compliance',
+      'QA Lead: Create additional edge case tests for concurrent uploads',
+      'Senior QA: Finalize security test suite for GDPR compliance',
       'Dev Lead: Complete API integration for image processing',
       'Team: Review and estimate remaining stories in backlog'
     ]

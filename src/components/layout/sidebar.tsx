@@ -6,12 +6,12 @@ import { usePathname } from 'next/navigation'
 import {
   HomeIcon,
   DocumentTextIcon,
-  BeakerIcon,
   ChatBubbleLeftRightIcon,
-  ChartBarIcon,
+  ServerStackIcon,
   Cog6ToothIcon,
   VideoCameraIcon,
-  MagnifyingGlassIcon,
+  BugAntIcon,
+  CodeBracketIcon,
 } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils'
 
@@ -24,11 +24,11 @@ export interface NavItem {
 const defaultNavItems: NavItem[] = [
   { name: 'Dashboard', href: '/', icon: HomeIcon },
   { name: 'Epics', href: '/epics', icon: DocumentTextIcon },
-  { name: 'Test Cases', href: '/test-cases', icon: BeakerIcon },
+  { name: 'Bug Hunts', href: '/bug-hunts', icon: BugAntIcon },
+  { name: 'Code Changes', href: '/code-changes', icon: CodeBracketIcon },
   { name: 'AI Assistant', href: '/ai-assistant', icon: ChatBubbleLeftRightIcon },
   { name: 'Meetings', href: '/meetings', icon: VideoCameraIcon },
-  { name: 'Research', href: '/research', icon: MagnifyingGlassIcon },
-  { name: 'Analytics', href: '/analytics', icon: ChartBarIcon },
+  { name: 'New Relic', href: '/new-relic', icon: ServerStackIcon },
   { name: 'Settings', href: '/settings', icon: Cog6ToothIcon },
 ]
 
@@ -44,7 +44,7 @@ export function Sidebar({ navItems = defaultNavItems, collapsed = false, onToggl
   return (
     <aside
       className={cn(
-        'sticky top-16 h-[calc(100vh-4rem)] glass-sidebar transition-all duration-300',
+        'sticky top-16 h-[calc(100vh-4rem)] glass-sidebar transition-all duration-500 ease-in-out',
         collapsed ? 'w-16' : 'w-64'
       )}
     >
@@ -59,15 +59,22 @@ export function Sidebar({ navItems = defaultNavItems, collapsed = false, onToggl
                 <Link
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200',
+                    'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300 relative overflow-hidden',
                     isActive
-                      ? 'glass-button-primary shadow-lg'
-                      : 'text-gray-700 hover:bg-white/50 hover:text-[#FF451A] glass-button'
+                      ? 'glass-button-primary shadow-lg text-white'
+                      : 'text-gray-700 hover:bg-gradient-to-r hover:from-orange-50/50 hover:to-orange-100/50 hover:text-[#FF451A] hover:border-orange-200'
                   )}
                   title={collapsed ? item.name : undefined}
                 >
-                  <Icon className="h-5 w-5 flex-shrink-0" />
-                  {!collapsed && <span>{item.name}</span>}
+                  <Icon className={cn(
+                    "h-5 w-5 flex-shrink-0 transition-transform duration-300",
+                    isActive ? "scale-110" : "group-hover:scale-110 group-hover:rotate-3"
+                  )} />
+                  {!collapsed && (
+                    <span className="transition-all duration-300 group-hover:translate-x-0.5">
+                      {item.name}
+                    </span>
+                  )}
                 </Link>
               </li>
             )
@@ -76,7 +83,7 @@ export function Sidebar({ navItems = defaultNavItems, collapsed = false, onToggl
         
         <button
           onClick={onToggle}
-          className="mt-auto flex items-center justify-center rounded-lg p-2 text-gray-600 hover:text-[#FF451A] glass-button"
+          className="mt-auto flex items-center justify-center rounded-xl p-2.5 text-gray-600 hover:text-[#FF451A] glass-button transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-50/50 hover:to-orange-100/50"
           aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           <svg
